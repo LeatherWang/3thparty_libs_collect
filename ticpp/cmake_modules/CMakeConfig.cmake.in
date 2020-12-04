@@ -1,43 +1,17 @@
-# Copyright (c) 2018, ETH Zurich and UNC Chapel Hill.
+# Copyright (c) 2020, CVTE.
 # All rights reserved.
 #
-# Redistribution and use in source and binary forms, with or without
-# modification, are permitted provided that the following conditions are met:
-#
-#     * Redistributions of source code must retain the above copyright
-#       notice, this list of conditions and the following disclaimer.
-#
-#     * Redistributions in binary form must reproduce the above copyright
-#       notice, this list of conditions and the following disclaimer in the
-#       documentation and/or other materials provided with the distribution.
-#
-#     * Neither the name of ETH Zurich and UNC Chapel Hill nor the names of
-#       its contributors may be used to endorse or promote products derived
-#       from this software without specific prior written permission.
-#
-# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-# ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE
-# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-# CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-# POSSIBILITY OF SUCH DAMAGE.
-#
-# Author: Johannes L. Schoenberger (jsch-at-demuc-dot-de)
+# Author: PGWang(wangpige@cvte.com)
 
-# Find package module for COLMAP library.
+# Find package module for @LW_EXPORT_PROJECT_NAME@ library.
 #
 # The following variables are set by this module:
 #
-#   @LW_EXPORT_PROJECT_NAME@_FOUND: TRUE if COLMAP is found.
-#   @LW_EXPORT_PROJECT_NAME@_VERSION: COLMAP version.
-#   @LW_EXPORT_PROJECT_NAME@_INCLUDE_DIRS: Include directories for COLMAP.
-#   @LW_EXPORT_PROJECT_NAME@_LINK_DIRS: Link directories for COLMAP.
-#   @LW_EXPORT_PROJECT_NAME@_LIBRARIES: Libraries required to link COLMAP.
+#   @LW_EXPORT_PROJECT_NAME@_FOUND: TRUE if @LW_EXPORT_PROJECT_NAME@ is found.
+#   @LW_EXPORT_PROJECT_NAME@_VERSION: @LW_EXPORT_PROJECT_NAME@ version.
+#   @LW_EXPORT_PROJECT_NAME@_INCLUDE_DIRS: Include directories for @LW_EXPORT_PROJECT_NAME@.
+#   @LW_EXPORT_PROJECT_NAME@_LINK_DIRS: Link directories for @LW_EXPORT_PROJECT_NAME@.
+#   @LW_EXPORT_PROJECT_NAME@_LIBRARIES: Libraries required to link @LW_EXPORT_PROJECT_NAME@.
 
 get_filename_component(@LW_EXPORT_PROJECT_NAME@_INSTALL_PREFIX ${CMAKE_CURRENT_LIST_FILE} PATH)
 set(@LW_EXPORT_PROJECT_NAME@_INSTALL_PREFIX "${@LW_EXPORT_PROJECT_NAME@_INSTALL_PREFIX}/../..")
@@ -50,7 +24,8 @@ set(CMAKE_MODULE_PATH ${@LW_EXPORT_PROJECT_NAME@_INSTALL_PREFIX}/share/@PROJECT_
 # Set the exported variables.
 set(@LW_EXPORT_PROJECT_NAME@_FOUND TRUE)
 
-set(@LW_EXPORT_PROJECT_NAME@_VERSION @TICPP_VERSION@)
+set(@LW_EXPORT_PROJECT_NAME@_VERSION @LW_EXPORT_PROJECT_VERSION@)
+message(STATUS "Found @LW_EXPORT_PROJECT_NAME@(Version: @LW_EXPORT_PROJECT_VERSION@)")
 
 set(@LW_EXPORT_PROJECT_NAME@_INCLUDE_DIRS
     ${@LW_EXPORT_PROJECT_NAME@_INSTALL_PREFIX}/include/
@@ -58,7 +33,7 @@ set(@LW_EXPORT_PROJECT_NAME@_INCLUDE_DIRS
 )
 
 set(@LW_EXPORT_PROJECT_NAME@_LINK_DIRS
-    ${@LW_EXPORT_PROJECT_NAME@_INSTALL_PREFIX}/libs/${CMAKE_SYSTEM_PROCESSOR}
+    ${@LW_EXPORT_PROJECT_NAME@_INSTALL_PREFIX}/libs/@PROJECT_NAME@/${CMAKE_SYSTEM_PROCESSOR}
 )
 
 set(@LW_EXPORT_PROJECT_NAME@_INTERNAL_LIBRARIES

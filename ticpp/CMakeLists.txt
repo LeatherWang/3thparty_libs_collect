@@ -21,7 +21,7 @@ set(TICPP_VERSION_REVISION 0)
 set(TICPP_VERSION ${TICPP_VERSION_MAJOR}.${TICPP_VERSION_MINOR}.${TICPP_VERSION_REVISION})
 
 # ==========================[ set rpath ]==========================
-set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/libs/${CMAKE_SYSTEM_PROCESSOR}")
+set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/libs/${PROJECT_NAME}/${CMAKE_SYSTEM_PROCESSOR}")
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 # ==========================[ find package ]==========================
@@ -68,8 +68,8 @@ target_link_libraries( rw_urdf
 # ==========================[ install ]==========================
 install(TARGETS ${PROJECT_NAME}_lib
         RUNTIME DESTINATION bin/${PROJECT_NAME}/${CMAKE_SYSTEM_PROCESSOR}
-        LIBRARY DESTINATION libs/${CMAKE_SYSTEM_PROCESSOR}
-        ARCHIVE DESTINATION libs/${CMAKE_SYSTEM_PROCESSOR}
+        LIBRARY DESTINATION libs/${PROJECT_NAME}/${CMAKE_SYSTEM_PROCESSOR}
+        ARCHIVE DESTINATION libs/${PROJECT_NAME}/${CMAKE_SYSTEM_PROCESSOR}
         PERMISSIONS OWNER_EXECUTE OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ)
 INSTALL(DIRECTORY ${PROJECT_SOURCE_DIR}/include/
         DESTINATION include/${PROJECT_NAME}
@@ -77,6 +77,7 @@ INSTALL(DIRECTORY ${PROJECT_SOURCE_DIR}/include/
 
 # ==========================[ export ]==========================
 set(LW_EXPORT_PROJECT_NAME TICPP)
+set(LW_EXPORT_PROJECT_VERSION ${TICPP_VERSION})
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/cmake_modules/CMakeConfig.cmake.in"
     "${CMAKE_CURRENT_BINARY_DIR}/${LW_EXPORT_PROJECT_NAME}Config.cmake" @ONLY)
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${LW_EXPORT_PROJECT_NAME}Config.cmake"
