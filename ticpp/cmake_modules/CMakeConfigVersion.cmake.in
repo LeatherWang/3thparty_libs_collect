@@ -1,7 +1,4 @@
-# Copyright (c) 2020, CVTE.
-# All rights reserved.
-#
-# Author: PGWang(wangpige@cvte.com)
+# Author: PGWang(leatherwang@foxmail.com)
 
 set(PACKAGE_VERSION @LW_EXPORT_PROJECT_VERSION@)
 
